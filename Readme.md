@@ -21,7 +21,7 @@ To install and run the Wallet Application locally, follow these steps:
 ### Step 1: Clone the repository
 
 ```
-git clone <repositoru url>
+git clone <repository url>
 ```
 
 ### Step 2: Install dependencies
@@ -54,7 +54,7 @@ JWT_SECRET=<jwt-secret>
 CLOUDINARY_NAME=<cloudinary-name>
 CLOUDINARY_API_KEY=<cloudinary-api-key>
 CLOUDINARY_API_SECRET=<cloudinary-api-secret>
-VITE_URL=https://mern-wallet-two.onrender.com
+VITE_URL=<link>
 ```
 
 ## Features
