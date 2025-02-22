@@ -21,8 +21,7 @@ const Featured = () => {
         <p className='title'>Total sales made today</p>
         <p className='amount'>$420</p>
         <p className='desc'>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit
-          itaque tenetur dolorum iusto?
+        Sales performance has reached 70% of the daily target, reflecting steady growth in revenue.
         </p>
         <div className='summary'>
           <div className='item'>
@@ -36,14 +35,14 @@ const Featured = () => {
             <div className='itemTitle'>Last Week</div>
             <div className='itemResult negative'>
               <KeyboardArrowDownRounded fontSize='small' />
-              <div className='resultAmount'>$12.4k</div>
+              <div className='resultAmount'>$11.4k</div>
             </div>
           </div>
           <div className='item'>
             <div className='itemTitle'>Last Month</div>
             <div className='itemResult negative'>
               <KeyboardArrowDownRounded fontSize='small' />
-              <div className='resultAmount'>$12.4k</div>
+              <div className='resultAmount'>$10.4k</div>
             </div>
           </div>
         </div>
