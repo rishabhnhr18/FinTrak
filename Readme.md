@@ -21,7 +21,7 @@ To install and run the Wallet Application locally, follow these steps:
 ### Step 1: Clone the repository
 
 ```
-git clone <repositoru url>
+git clone <repository url>
 ```
 
 ### Step 2: Install dependencies
@@ -54,7 +54,7 @@ JWT_SECRET=<jwt-secret>
 CLOUDINARY_NAME=<cloudinary-name>
 CLOUDINARY_API_KEY=<cloudinary-api-key>
 CLOUDINARY_API_SECRET=<cloudinary-api-secret>
-VITE_URL=https://mern-wallet-two.onrender.com
+VITE_URL=<link>
 ```
 
 ## Features
@@ -76,12 +76,4 @@ VITE_URL=https://mern-wallet-two.onrender.com
 
 ### API docs
 to view api docs [click here](https://documenter.getpostman.com/view/8886902/2s93ebRVyS)
-
-### deployed version
-
-to view live [click here](https://easypay-seven.vercel.app)
-
-### video explanation
-
-live video explanation [click here](https://youtu.be/KYcF1jd3X3Q)
 
