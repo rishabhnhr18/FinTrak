@@ -11,7 +11,7 @@ import {
 
 const data = [
   { name: 'Jan', Total: 1200 },
-  { name: 'Feb', Total: 2100 },
+  { name: 'Feb', Total: 2200 },
   { name: 'Mar', Total: 800 },
   { name: 'Apr', Total: 1600 },
   { name: 'May', Total: 900 },
