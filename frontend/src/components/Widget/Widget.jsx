@@ -105,7 +105,7 @@ const Widget = ({ type }) => {
           {data.isSend && moneySend}
           {data.isReceived && moneyReceived}
           {data.isAnyReq && requestReceived}
-          {data.isBalance && USDollar.format(balance)}
+          {data.isBalance && INRupee.format(balance)}
         </span>
         {data.link === '/balance' ? (
           <span
