@@ -6,9 +6,9 @@ export const optionsTime = {
   hour12: true,
 }
 
-export const USDollar = new Intl.NumberFormat('en-US', {
+export const IndianRupee = new Intl.NumberFormat('en-IN', {
   style: 'currency',
-  currency: 'USD',
+  currency: 'INR',
   maximumFractionDigits: 0,
   minimumFractionDigits: 0,
 })
