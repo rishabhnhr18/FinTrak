@@ -13,7 +13,7 @@ import {
   getReceivedTransactions,
 } from '../../features/transactions/transactionSlice'
 import Loader from '../../components/Loader/Loader'
-import { optionsDate, optionsTime, USDollar } from '../utils/helpOptions'
+import { optionsDate, optionsTime, IndianRupee } from '../utils/helpOptions'
 
 const Received = () => {
   const dispatch = useDispatch()

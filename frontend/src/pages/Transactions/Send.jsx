@@ -13,7 +13,7 @@ import {
 } from '../../features/transactions/transactionSlice'
 import './Transactions.scss'
 import Loader from '../../components/Loader/Loader'
-import { optionsDate, optionsTime, USDollar } from '../utils/helpOptions'
+import { optionsDate, optionsTime, IndianRupee } from '../utils/helpOptions'
 
 const Send = () => {
   const dispatch = useDispatch()
