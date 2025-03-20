@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { reset, requestSend } from '../../features/request/requestSlice'
 import Loader from '../../components/Loader/Loader'
-import { optionsDate, optionsTime, USDollar } from '../utils/helpOptions'
+import { optionsDate, optionsTime, IndianRupee } from '../utils/helpOptions'
 
 const RequestSend = () => {
   const dispatch = useDispatch()

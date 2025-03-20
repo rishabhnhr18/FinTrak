@@ -16,7 +16,7 @@ import {
 } from '../../features/request/requestSlice'
 import Loader from '../../components/Loader/Loader'
 
-import { optionsDate, optionsTime, USDollar } from '../utils/helpOptions'
+import { optionsDate, optionsTime, IndianRupee } from '../utils/helpOptions'
 
 const RequestReceived = () => {
   const dispatch = useDispatch()
