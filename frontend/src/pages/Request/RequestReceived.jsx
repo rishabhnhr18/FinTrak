@@ -83,13 +83,13 @@ const RequestReceived = () => {
               </TableCell>
               <TableCell className='tableCell date'>
                 {new Date(transaction.createdAt).toLocaleString(
-                  'en-US',
+                  'en-IN',
                   optionsDate
                 )}
                 <div className='time'>
                   at{' '}
                   {new Date(transaction.createdAt).toLocaleString(
-                    'en-US',
+                    'en-IN',
                     optionsTime
                   )}
                 </div>
@@ -103,7 +103,7 @@ const RequestReceived = () => {
                 </span>
               </TableCell>
               <TableCell className='tableCell'>
-                {USDollar.format(transaction.amount)}
+                {IndianRupee.format(transaction.amount)}
               </TableCell>
               <TableCell className='tableCell'>
                 {transaction.description}

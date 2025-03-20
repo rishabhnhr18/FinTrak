@@ -56,13 +56,13 @@ const RequestSend = () => {
               </TableCell>
               <TableCell className='tableCell date'>
                 {new Date(transaction.createdAt).toLocaleString(
-                  'en-US',
+                  'en-IN',
                   optionsDate
                 )}
                 <div className='time'>
                   at{' '}
                   {new Date(transaction.createdAt).toLocaleString(
-                    'en-US',
+                    'en-IN',
                     optionsTime
                   )}
                 </div>
@@ -76,20 +76,20 @@ const RequestSend = () => {
                 </span>
               </TableCell>
               <TableCell className='tableCell'>
-                {USDollar.format(transaction.amount)}
+                {IndianRupee.format(transaction.amount)}
               </TableCell>
               <TableCell className='tableCell date'>
                 {transaction.status === 'accepted' ? (
                   <>
                     {new Date(transaction.updatedAt).toLocaleString(
-                      'en-US',
+                      'en-IN',
                       optionsDate
                     )}
 
                     <div className='time'>
                       at{' '}
                       {new Date(transaction.updatedAt).toLocaleString(
-                        'en-US',
+                        'en-IN',
                         optionsTime
                       )}
                     </div>
