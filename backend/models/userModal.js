@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
     },
     identificationNumber: {
       type: String,
-      required: [true, 'Please add identification number'],
+      required: [true, 'Please add the identification number'],
       min: [6, 'at least 6 numbers'],
       max: 12,
       unique: true,
