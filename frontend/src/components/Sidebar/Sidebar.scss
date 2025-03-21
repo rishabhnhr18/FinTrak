@@ -9,7 +9,7 @@
     @include flexPreset();
     height: 50px;
     .logo {
-      font-size: 20px;
+      font-size: 25px;
       font-weight: 800;
     }
   }
@@ -37,12 +37,12 @@
           background-color: rgb(236, 232, 255);
         }
         .icon {
-          font-size: 1.1rem;
+          font-size: 1.3rem;
           color: $primaryColor;
         }
 
         span {
-          font-size: 0.8rem;
+          font-size: 1rem;
           font-weight: 600;
           color: #888888;
           margin: 0 0 0 0.625rem;
