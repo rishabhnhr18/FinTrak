@@ -2,7 +2,7 @@
 ![image](https://github.com/kashikaga/FinTrak/blob/main/FinTrak.png)
 
 <br><br>
-#Chatbot Implementation
+## Chatbot Implementation
 ![image](https://github.com/user-attachments/assets/48075e36-a412-43f4-b4ec-206fea6ea88f)
 
 
