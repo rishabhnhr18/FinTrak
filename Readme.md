@@ -1,6 +1,11 @@
 # FinTrak Application
 ![image](https://github.com/kashikaga/FinTrak/blob/main/FinTrak.png)
 
+<br><br>
+## Chatbot Implementation
+![image](https://github.com/user-attachments/assets/48075e36-a412-43f4-b4ec-206fea6ea88f)
+
+
 The Wallet Application is a full-stack web application built using the **MERN** stack (MongoDB, Express.js, React.js, Node.js) that allows users send money, request money, add balance, accept payment, accept payment requets. It provides a user-friendly interface for organizing transactions and gaining insights into spending habits. 
 
 ## Technologies Used
