@@ -34,7 +34,43 @@ const Register = () => {
     dispatch(reset())
   }, [dispatch, navigate, isError, isSuccess, user, message])
 
-  const onChange = (e) => {
+  const validateInputs = () => {
+    // Regular expressions for validation
+    const nameRegex = /^[a-zA-Z ]{2,50}$/ // Name should only contain letters and spaces, 2-30 characters
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ // Basic email format
+    const phoneRegex = /^[0-9]{10}$/ // 10-digit phone number
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/ // Password: 6-12 characters, at least one letter and one number
+    if (!nameRegex.test(name)) {
+      alert('Please enter a valid name (only letters and spaces, 2-50 characters).')
+      return false
+    }
+
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email.')
+      return false
+    }
+
+    if (!phoneRegex.test(phone)) {
+      alert('Please enter a valid 10-digit phone number.')
+      return false
+    }
+
+    return true
+  }
+//  if (!passwordRegex.test(password)) {
+//       alert('Password must be 6-12 characters long, and include at least one letter and one number.')
+//       return false
+//     }
+
+//     return true
+//   }
+if (!passwordRegex.test(password)) {
+  alert('Password must be 6-12 characters long, and include at least one letter and one number.')
+  return false
+}
+
+return true
+const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
