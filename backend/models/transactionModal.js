@@ -27,7 +27,7 @@ const transactionSchema = new mongoose.Schema(
     reference: {
       type: String,
       required: true,
-      enum: ['transaction ID', 'payment reference'],
+      enum: ['select an option', 'payment reference'],
     },
   },
   { timestamps: true }
