@@ -339,7 +339,7 @@ var deposit = asyncHandler(function _callee6(req, res) {
 
         case 8:
           res.status(200).json({
-            msg: "Rs".concat(amount, " added to your account")
+            msg: "\u20B9".concat(amount, " added to your account")
           });
           _context6.next = 13;
           break;

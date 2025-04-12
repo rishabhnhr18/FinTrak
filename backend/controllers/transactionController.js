@@ -165,7 +165,8 @@ const deposit = asyncHandler(async (req, res) => {
       { $inc: { balance: amount } },
       { new: true }
     )
-    res.status(200).json({ msg: `Rs${amount} added to your account` })
+    res.status(200).json({ msg: `₹${amount} added to your account` });
+
   } else {
     res.status(400)
     throw new Error('user not found')
