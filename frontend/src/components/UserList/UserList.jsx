@@ -74,34 +74,37 @@ const List = () => {
             </TableHead>
             <TableBody>
               {users.map((user) => (
-                <TableRow key={user._id}>
-                  <TableCell className='tableCell'>{user._id}</TableCell>
+                <TableRow key={user?._id}>
+                  <TableCell className='tableCell'>{user?._id}</TableCell>
                   <TableCell className='tableCell'>
                     <div className='cellWrapper'>
-                      {user.image ? (
+                      {user?.image ? (
                         <img
-                          src={user.image}
-                          alt={user.name}
+                          src={user?.image}
+                          alt={user?.name}
                           className='image'
                         />
                       ) : (
-                        <img src={Avatar} alt={user.name} className='image' />
+                        <img 
+                        src={'/avatar.png'} 
+                        alt={user?.name} 
+                        className='image' />
                       )}
-                      {user.name}
+                      {user?.name}
                     </div>
                   </TableCell>
-                  <TableCell className='tableCell'>{user.email}</TableCell>
-                  <TableCell className='tableCell'>{user.phone}</TableCell>
+                  <TableCell className='tableCell'>{user?.email}</TableCell>
+                  <TableCell className='tableCell'>{user?.phone}</TableCell>
                   <TableCell className='tableCell'>
                     <span
                       className='send'
-                      onClick={() => handleSendModal(user._id)}>
+                      onClick={() => handleSendModal(user?._id)}>
                       send
                     </span>
 
                     <span
                       className='req'
-                      onClick={() => handleRequestModal(user._id)}>
+                      onClick={() => handleRequestModal(user?._id)}>
                       request
                     </span>
                   </TableCell>
