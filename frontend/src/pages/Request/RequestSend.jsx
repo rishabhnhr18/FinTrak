@@ -46,11 +46,20 @@ const RequestSend = () => {
             <TableRow key={transaction?._id}>
               <TableCell className='tableCell'>
                 <div className='cellWrapper'>
+                  {transaction?.receiver?.image ? (           
                   <img
                     src={transaction?.receiver?.image}
                     alt={transaction?.receiver?.name}
                     className='image'
                   />
+                  ):(
+                  <img
+                    src={'/avatar.png'}
+                    alt={transaction?.receiver?.name}
+                    className='image'
+                  />
+                  )
+                }
                   {transaction?.receiver?.name}
                 </div>
               </TableCell>
