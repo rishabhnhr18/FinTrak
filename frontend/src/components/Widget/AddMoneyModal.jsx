@@ -73,7 +73,7 @@ const AddMoneyModal = ({ setAddMoneyModal }) => {
                       value={amount}
                       onChange={onChange}
                       min='1'
-                      max='100000'
+                      max='10000'
                       placeholder='Rs1000'
                       required
                     />
