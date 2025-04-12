@@ -43,9 +43,21 @@ const Register = () => {
   }
   const onSubmit = (e) => {
     e.preventDefault()
+
     console.log(validator.isMobilePhone(phone))
     if (!validator.isMobilePhone(phone)) {
       alert('Invalid phone number')
+      return
+    }
+
+    console.log(validator.isEmail(email))
+    if (!validator.isEmail(email)) {
+      alert('Invalid email address')
+      return
+    }
+
+    if (password.length < 6) {
+      alert('Password must be at least 6 characters long')
       return
     }
     const userData = {
