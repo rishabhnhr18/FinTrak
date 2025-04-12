@@ -54,11 +54,21 @@ const Received = () => {
             <TableRow key={transaction._id}>
               <TableCell className='tableCell'>
                 <div className='cellWrapper'>
-                  <img
-                    src={transaction?.sender?.image}
-                    alt={transaction?.sender?.name}
-                    className='image'
-                  />
+                  {
+                    transaction?.sender?.image ? (
+                      <img
+                        src={transaction?.sender?.image}
+                        alt={transaction?.sender?.name}
+                        className='image'
+                      />
+                    ):(
+                      <img
+                        src={'/avatar.png'}
+                        alt={transaction?.sender?.name}
+                        className='image'
+                      />
+                    )
+                  }
                   {transaction?.sender?.name}
                 </div>
               </TableCell>
