@@ -55,50 +55,50 @@ const Received = () => {
               <TableCell className='tableCell'>
                 <div className='cellWrapper'>
                   <img
-                    src={transaction.sender.image}
-                    alt={transaction.sender.name}
+                    src={transaction?.sender?.image}
+                    alt={transaction?.sender?.name}
                     className='image'
                   />
-                  {transaction.sender.name}
+                  {transaction?.sender?.name}
                 </div>
               </TableCell>
               <TableCell className='tableCell date'>
-                {new Date(transaction.createdAt).toLocaleString(
+                {new Date(transaction?.createdAt).toLocaleString(
                   'en-IN',
                   optionsDate
                 )}
                 <div className='time'>
                   at{' '}
-                  {new Date(transaction.createdAt).toLocaleString(
+                  {new Date(transaction?.createdAt).toLocaleString(
                     'en-IN',
                     optionsTime
                   )}
                 </div>
               </TableCell>
               <TableCell className='tableCell'>
-                {transaction.transactionId}
+                {transaction?.transactionId}
               </TableCell>
               <TableCell className='tableCell'>
                 <span
                   className={`${
-                    transaction.transactionType === 'deposit' && 'deposit'
+                    transaction?.transactionType === 'deposit' && 'deposit'
                   }
                         ${
-                          transaction.transactionType === 'transfer' &&
+                          transaction?.transactionType === 'transfer' &&
                           'transfer'
                         }
                         ${
-                          transaction.transactionType === 'payment' && 'payment'
+                          transaction?.transactionType === 'payment' && 'payment'
                         }
                         ${
-                          transaction.transactionType === 'refund' && 'refund'
+                          transaction?.transactionType === 'refund' && 'refund'
                         }`}>
                   {transaction.transactionType}
                 </span>
               </TableCell>
 
               <TableCell className='tableCell'>
-                {IndianRupee.format(transaction.amount)}
+                {IndianRupee?.format(transaction.amount)}
               </TableCell>
               <TableCell className='tableCell'>
                 {transaction.reference}

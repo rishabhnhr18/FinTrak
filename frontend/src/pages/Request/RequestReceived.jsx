@@ -70,25 +70,25 @@ const RequestReceived = () => {
         </TableHead>
         <TableBody>
           {received.map((transaction) => (
-            <TableRow key={transaction._id}>
+            <TableRow key={transaction?._id}>
               <TableCell className='tableCell'>
                 <div className='cellWrapper'>
                   <img
-                    src={transaction.sender.image}
-                    alt={transaction.sender.name}
+                    src={transaction?.sender?.image}
+                    alt={transaction?.sender?.name}
                     className='image'
                   />
-                  {transaction.sender.name}
+                  {transaction?.sender?.name}
                 </div>
               </TableCell>
               <TableCell className='tableCell date'>
-                {new Date(transaction.createdAt).toLocaleString(
+                {new Date(transaction?.createdAt).toLocaleString(
                   'en-IN',
                   optionsDate
                 )}
                 <div className='time'>
                   at{' '}
-                  {new Date(transaction.createdAt).toLocaleString(
+                  {new Date(transaction?.createdAt).toLocaleString(
                     'en-IN',
                     optionsTime
                   )}
@@ -96,20 +96,20 @@ const RequestReceived = () => {
               </TableCell>
               <TableCell className='tableCell'>
                 <span
-                  className={`${transaction.status === 'pending' && 'pending'}
-        ${transaction.status === 'accepted' && 'accepted'}
-        ${transaction.status === 'cancel' && 'cancel'}`}>
-                  {transaction.status}
+                  className={`${transaction?.status === 'pending' && 'pending'}
+        ${transaction?.status === 'accepted' && 'accepted'}
+        ${transaction?.status === 'cancel' && 'cancel'}`}>
+                  {transaction?.status}
                 </span>
               </TableCell>
               <TableCell className='tableCell'>
-                {IndianRupee.format(transaction.amount)}
+                {IndianRupee?.format(transaction?.amount)}
               </TableCell>
               <TableCell className='tableCell'>
-                {transaction.description}
+                {transaction?.description}
               </TableCell>
               <TableCell className='tableCell'>
-                {transaction.status === 'pending' ? (
+                {transaction?.status === 'pending' ? (
                   <button
                     className='accept'
                     onClick={() => handleClick(transaction)}>

@@ -14,12 +14,13 @@ import {
 import './Transactions.scss'
 import Loader from '../../components/Loader/Loader'
 import { optionsDate, optionsTime, IndianRupee } from '../utils/helpOptions'
+//import avatarImage from '../../assets/xyz/avatar.png'
 
 const Send = () => {
   const dispatch = useDispatch()
 
-  const { send, isLoading } = useSelector((state) => state.transact)
-
+  const { send, isLoading } = useSelector((state) => state?.transact)
+console.log(send)
   useEffect(() => {
     return () => {
       dispatch(reset())
@@ -52,58 +53,68 @@ const Send = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {send.map((transaction) => (
+          {send?.map((transaction) => (
             <TableRow key={transaction._id}>
               <TableCell className='tableCell'>
                 <div className='cellWrapper'>
-                  <img
-                    src={transaction.receiver.image}
-                    alt={transaction.receiver.name}
-                    className='image'
-                  />
-                  {transaction.receiver.name}
+                  {
+                    transaction?.receiver?.image ? (
+                      <img
+                        src={transaction?.receiver?.image}
+                        alt={transaction?.receiver?.name}
+                        className='image'
+                      />
+                    ):(
+                      <img
+                        src={'/avatar.png'}
+                        alt={transaction?.receiver?.name}
+                        className='image'
+                      />
+                    )
+                  }
+                  {transaction?.receiver?.name}
                 </div>
               </TableCell>
               <TableCell className='tableCell date'>
-                {new Date(transaction.createdAt).toLocaleString(
+                {new Date(transaction?.createdAt).toLocaleString(
                   'en-IN',
                   optionsDate
                 )}
                 <div className='time'>
                   at{' '}
-                  {new Date(transaction.createdAt).toLocaleString(
+                  {new Date(transaction?.createdAt).toLocaleString(
                     'en-IN',
                     optionsTime
                   )}
                 </div>
               </TableCell>
               <TableCell className='tableCell'>
-                {transaction.transactionId}
+                {transaction?.transactionId}
               </TableCell>
               <TableCell className='tableCell'>
                 <span
                   className={`${
-                    transaction.transactionType === 'deposit' && 'deposit'
+                    transaction?.transactionType === 'deposit' && 'deposit'
                   }
                         ${
-                          transaction.transactionType === 'transfer' &&
+                          transaction?.transactionType === 'transfer' &&
                           'transfer'
                         }
                         ${
-                          transaction.transactionType === 'payment' && 'payment'
+                          transaction?.transactionType === 'payment' && 'payment'
                         }
                         ${
-                          transaction.transactionType === 'refund' && 'refund'
+                          transaction?.transactionType === 'refund' && 'refund'
                         }`}>
-                  {transaction.transactionType}
+                  {transaction?.transactionType}
                 </span>
               </TableCell>
 
               <TableCell className='tableCell'>
-                {IndianRupee.format(transaction.amount)}
+                {IndianRupee?.format(transaction?.amount)}
               </TableCell>
               <TableCell className='tableCell'>
-                {transaction.reference}
+                {transaction?.reference}
               </TableCell>
             </TableRow>
           ))}

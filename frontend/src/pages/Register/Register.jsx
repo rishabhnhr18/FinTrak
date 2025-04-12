@@ -4,6 +4,7 @@ import Spinner from '../../components/Spinner/Spinner'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { register, reset } from '../../features/auth/authSlice'
+import validator from 'validator'
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -42,7 +43,11 @@ const Register = () => {
   }
   const onSubmit = (e) => {
     e.preventDefault()
-
+    console.log(validator.isMobilePhone(phone))
+    if (!validator.isMobilePhone(phone)) {
+      alert('Invalid phone number')
+      return
+    }
     const userData = {
       name,
       email,

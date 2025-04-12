@@ -43,25 +43,25 @@ const RequestSend = () => {
         </TableHead>
         <TableBody>
           {send.map((transaction) => (
-            <TableRow key={transaction._id}>
+            <TableRow key={transaction?._id}>
               <TableCell className='tableCell'>
                 <div className='cellWrapper'>
                   <img
-                    src={transaction.receiver.image}
-                    alt={transaction.receiver.name}
+                    src={transaction?.receiver?.image}
+                    alt={transaction?.receiver?.name}
                     className='image'
                   />
-                  {transaction.receiver.name}
+                  {transaction?.receiver?.name}
                 </div>
               </TableCell>
               <TableCell className='tableCell date'>
-                {new Date(transaction.createdAt).toLocaleString(
+                {new Date(transaction?.createdAt).toLocaleString(
                   'en-IN',
                   optionsDate
                 )}
                 <div className='time'>
                   at{' '}
-                  {new Date(transaction.createdAt).toLocaleString(
+                  {new Date(transaction?.createdAt).toLocaleString(
                     'en-IN',
                     optionsTime
                   )}
@@ -69,26 +69,26 @@ const RequestSend = () => {
               </TableCell>
               <TableCell className='tableCell'>
                 <span
-                  className={`${transaction.status === 'pending' && 'pending'}
-                ${transaction.status === 'accepted' && 'accepted'}
-                ${transaction.status === 'cancel' && 'cancel'}`}>
+                  className={`${transaction?.status === 'pending' && 'pending'}
+                ${transaction?.status === 'accepted' && 'accepted'}
+                ${transaction?.status === 'cancel' && 'cancel'}`}>
                   {transaction.status}
                 </span>
               </TableCell>
               <TableCell className='tableCell'>
-                {IndianRupee.format(transaction.amount)}
+                {IndianRupee?.format(transaction?.amount)}
               </TableCell>
               <TableCell className='tableCell date'>
-                {transaction.status === 'accepted' ? (
+                {transaction?.status === 'accepted' ? (
                   <>
-                    {new Date(transaction.updatedAt).toLocaleString(
+                    {new Date(transaction?.updatedAt).toLocaleString(
                       'en-IN',
                       optionsDate
                     )}
 
                     <div className='time'>
                       at{' '}
-                      {new Date(transaction.updatedAt).toLocaleString(
+                      {new Date(transaction?.updatedAt).toLocaleString(
                         'en-IN',
                         optionsTime
                       )}
