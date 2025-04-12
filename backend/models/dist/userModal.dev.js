@@ -14,7 +14,8 @@ var userSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: [true, 'Please add a phone number']
+    required: [true, 'Please add a phone number'],
+    min: [10, 'at least 10 numbers']
   },
   password: {
     type: String,
