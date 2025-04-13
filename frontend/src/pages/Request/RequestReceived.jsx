@@ -38,18 +38,45 @@ const RequestReceived = () => {
     }
   }, [dispatch])
 
-  const handleClick = (transaction) => {
-    const newRequest = {
-      _id: transaction?._id,
-      sender: transaction?.receiver._id,
-      receiver: transaction?.sender._id,
-      amount: transaction?.amount,
-      transactionType: 'deposit',
-      reference: 'payment reference',
-      status: 'accepted',
+  // const handleClick = (transaction) => {
+  //   const newRequest = {
+  //     _id: transaction?._id,
+  //     sender: transaction?.receiver._id,
+  //     receiver: transaction?.sender._id,
+  //     amount: transaction?.amount,
+  //     transactionType: 'deposit',
+  //     reference: 'payment reference',
+  //     status: 'accepted',
+  //   }
+  //   dispatch(updateRequest(newRequest))
+  // }
+  const handleClick = (transaction, actionType) => {
+    let updatedStatus = 'pending'
+    let transactionType = ''
+  
+    if (actionType === 'accept') {
+      updatedStatus = 'accepted'
+      transactionType = 'deposit'
+    } else if (actionType === 'deny') {
+      updatedStatus = 'denied'
+    } else if (actionType === 'later') {
+      updatedStatus = 'pending' // no change needed, just don't act now
     }
-    dispatch(updateRequest(newRequest))
+  
+    if (actionType !== 'later') {
+      const newRequest = {
+        _id: transaction?._id,
+        sender: transaction?.receiver._id,
+        receiver: transaction?.sender._id,
+        amount: transaction?.amount,
+        transactionType,
+        reference: 'payment reference',
+        status: updatedStatus,
+      }
+      dispatch(updateRequest(newRequest))
+    }
   }
+  
 
   if (isLoading || reqSuccess) {
     return <Loader />
@@ -119,7 +146,7 @@ const RequestReceived = () => {
                 {transaction?.description}
               </TableCell>
               <TableCell className='tableCell'>
-                {transaction?.status === 'pending' ? (
+                {/* {transaction?.status === 'pending' ? (
                   <button
                     className='accept'
                     onClick={() => handleClick(transaction)}>
@@ -129,7 +156,31 @@ const RequestReceived = () => {
                   <button className='paid' disabled>
                     Paid
                   </button>
-                )}
+                )} */}
+                {transaction?.status === 'pending' ? (
+  <div className='actionButtons'>
+    <button
+      className='accept' 
+      onClick={() => handleClick(transaction, 'accept')}>
+      Accept and pay
+    </button>
+    <button
+      className='later'
+      onClick={() => handleClick(transaction, 'later')}>
+      Pay later
+    </button>
+    <button
+      className='deny'
+      onClick={() => handleClick(transaction, 'deny')}>
+      Deny
+    </button>
+  </div>
+) : (
+  <button className='paid' disabled>
+    {transaction?.status === 'accepted' ? 'Paid' : transaction?.status}
+  </button>
+)}
+
               </TableCell>
             </TableRow>
           ))}
