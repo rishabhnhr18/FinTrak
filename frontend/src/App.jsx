@@ -11,6 +11,7 @@ import Request from './pages/Request/Request'
 import Profile from './pages/Profile/Profile'
 import NotFound from './pages/NotFound/NotFound'
 import ErrorBoundary from './ErrorBoundary'
+import Chatbot from './pages/chatbot/Chatbot'
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
 
+
+ {/* Chatbot route as public route - not inside ProtectedRoutes */}
+ <Route path='chatbot' element={<Chatbot />} />
             <Route element={<ProtectedRoutes />}>
               <Route path='home' element={<Home />} />
             </Route>
@@ -40,6 +44,7 @@ function App() {
             </Route>
             <Route path='*' element={<NotFound />} />
           </Routes>
+          <ChatbotButton />
         </ErrorBoundary>
       </Router>
       <ToastContainer />
