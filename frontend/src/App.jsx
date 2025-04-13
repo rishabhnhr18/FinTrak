@@ -12,6 +12,7 @@ import Profile from './pages/Profile/Profile'
 import NotFound from './pages/NotFound/NotFound'
 import ErrorBoundary from './ErrorBoundary'
 import Chatbot from './pages/chatbot/Chatbot'
+import ChatbotButton from './components/ChatbotButton'
 
 function App() {
   return (

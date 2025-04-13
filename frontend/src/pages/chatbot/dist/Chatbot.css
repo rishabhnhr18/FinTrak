@@ -1,7 +1,6 @@
 /* App.css */
 #root {
   max-width: 1280px;
-  text-align: center;
   background-color: #f4f4f4;
   height: 100vh;
   display: flex;
@@ -30,7 +29,6 @@ textarea {
 }
 
 button {
-  padding: 10px 20px;
   background-color: #4a4e69;
   color: #fff;
   font-size: 1rem;
@@ -64,7 +62,6 @@ pre {
 /* Chatbot styling effect */
 .chat-container {
   background: #ffffff;
-  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 500px;
@@ -90,7 +87,6 @@ pre {
 .chat-footer {
   width: 100%;
   margin-top: 10px;
-  display: flex;
   flex-direction: column;
 }
 
@@ -111,7 +107,6 @@ pre {
   height: 450px;
   background: #f9f9f9;
   border-radius: 10px;
-  padding: 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
