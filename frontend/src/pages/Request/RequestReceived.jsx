@@ -40,10 +40,10 @@ const RequestReceived = () => {
 
   const handleClick = (transaction) => {
     const newRequest = {
-      _id: transaction._id,
-      sender: transaction.receiver._id,
-      receiver: transaction.sender._id,
-      amount: transaction.amount,
+      _id: transaction?._id,
+      sender: transaction?.receiver._id,
+      receiver: transaction?.sender._id,
+      amount: transaction?.amount,
       transactionType: 'deposit',
       reference: 'payment reference',
       status: 'accepted',
