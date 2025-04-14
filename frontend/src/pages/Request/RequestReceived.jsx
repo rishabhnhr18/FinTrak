@@ -60,6 +60,7 @@ const RequestReceived = () => {
       transactionType = 'deposit'
     } else if (actionType === 'deny') {
       updatedStatus = 'denied'
+      toast.error('Request has been denied')
     } else if (actionType === 'later') {
       updatedStatus = 'pending'
       toast.success('Request marked as pay later')
