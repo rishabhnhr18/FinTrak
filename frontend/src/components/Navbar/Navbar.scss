@@ -7,7 +7,7 @@
   font-size: 0.87rem;
   color: #555555;
   .wrapper {
-    //padding: 0 1.2rem;
+    padding: 0 1.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,7 +37,7 @@
     .item {
       display: flex;
       align-items: center;
-      //margin-right: 1.25rem;
+      margin-right: 1.25rem;
       position: relative;
       &.admin {
         flex-direction: column;
