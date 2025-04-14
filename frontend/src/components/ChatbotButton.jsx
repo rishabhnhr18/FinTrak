@@ -23,7 +23,7 @@ const ChatbotButton = () => {
         border: 'none',
         boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
         cursor: 'pointer',
-        //display: 'flex',
+        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1000
