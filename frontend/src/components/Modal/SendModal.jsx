@@ -15,14 +15,15 @@ const SendModal = ({ setSendModalOpen, receiverId }) => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message)
+      toast.error(message || 'Transaction failed')
+      setSendModalOpen(false)
     }
     if (isSuccess) {
-      toast.success('money send successfully')
+      toast.success('Money sent successfully')
       setSendModalOpen(false)
     }
     dispatch(reset())
-  }, [isError, message, isSuccess])
+  }, [isError, message, isSuccess, dispatch, setSendModalOpen])
 
   const [formData, setFormData] = useState({
     sender: _id,
@@ -42,10 +43,14 @@ const SendModal = ({ setSendModalOpen, receiverId }) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    if (!amount || amount <= 0) {
+      toast.error('Please enter a valid amount')
+      return
+    }
     const transactionData = {
       sender,
       receiver,
-      amount,
+      amount: Number(amount),
       transactionType,
       reference,
     }

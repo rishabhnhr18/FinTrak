@@ -17,13 +17,31 @@ const transferAmount = asyncHandler(async (req, res) => {
     !receiverUser.isVerified
   ) {
     res.status(400)
-    throw new Error('sender not verified or loggedin or receiver not found')
-  } else {
-    if (!amount || !sender || !receiver || !transactionType || !reference) {
-      res.status(400)
-      throw new Error('please include all fields')
-    }
+    throw new Error('Sender not verified or logged in or receiver not found')
+  }
 
+  if (!amount || !sender || !receiver || !transactionType || !reference) {
+    res.status(400)
+    throw new Error('Please include all fields')
+  }
+
+  // Check if sender has sufficient balance
+  const senderUser = await User.findById(sender)
+  if (!senderUser) {
+    res.status(404)
+    throw new Error('Sender not found')
+  }
+
+  if (senderUser.balance < amount) {
+    res.status(400)
+    throw new Error('Insufficient balance')
+  }
+
+  // Start a session for transaction
+  const session = await User.startSession()
+  session.startTransaction()
+
+  try {
     const transfer = await Transaction.create({
       amount,
       sender,
@@ -32,38 +50,42 @@ const transferAmount = asyncHandler(async (req, res) => {
       reference,
       transactionId: crypto.randomBytes(5).toString('hex'),
     })
-    await transfer.save()
-    await User.findByIdAndUpdate(sender, {
-      $inc: { balance: -amount },
-    })
-    await User.findByIdAndUpdate(receiver, {
-      $inc: { balance: amount },
-    })
-    await User.findByIdAndUpdate(
+
+    // Update sender's balance
+    const updatedSender = await User.findByIdAndUpdate(
       sender,
-      { $inc: { moneySend: 1 } },
-      { new: true }
-    )
-    await User.findByIdAndUpdate(
-      receiver,
-      { $inc: { moneyReceived: 1 } },
-      { new: true }
+      { $inc: { balance: -amount, moneySend: 1 } },
+      { new: true, session }
     )
 
-    if (transfer) {
-      res.status(201).send({
-        _id: transfer._id,
-        amount: transfer.amount,
-        sender: transfer.sender,
-        receiver: transfer.receiver,
-        transactionType: transfer.transactionType,
-        reference: transfer.reference,
-        transactionId: transfer.transactionId,
-      })
-    } else {
-      res.status(404)
-      throw new Error('not created transfer')
-    }
+    // Update receiver's balance
+    const updatedReceiver = await User.findByIdAndUpdate(
+      receiver,
+      { $inc: { balance: amount, moneyReceived: 1 } },
+      { new: true, session }
+    )
+
+    // Commit the transaction
+    await session.commitTransaction()
+    session.endSession()
+
+    res.status(201).send({
+      _id: transfer._id,
+      amount: transfer.amount,
+      sender: transfer.sender,
+      receiver: transfer.receiver,
+      transactionType: transfer.transactionType,
+      reference: transfer.reference,
+      transactionId: transfer.transactionId,
+      senderBalance: updatedSender.balance,
+      receiverBalance: updatedReceiver.balance
+    })
+  } catch (error) {
+    // If any error occurs, abort the transaction
+    await session.abortTransaction()
+    session.endSession()
+    res.status(400)
+    throw new Error(error.message || 'Transaction failed')
   }
 })
 
@@ -145,31 +167,49 @@ const getMoneyReceiveTransactions = asyncHandler(async (req, res) => {
 // @access  Private
 const deposit = asyncHandler(async (req, res) => {
   const { amount } = req.body
-  console.log(amount)
   const user = await User.findById(req.user._id)
 
-  if (user) {
-    // const transaction = new Transaction({
-    //   sender: user._id,
-    //   receiver: user._id,
-    //   amount: amount,
-    //   transactionId: crypto.randomBytes(5).toString('hex'),
-    //   type: 'deposit',
-    //   reference: 'payment reference',
-    //   status: 'success',
-    // })
-
-    // await transaction.save()
-    await User.findByIdAndUpdate(
-      user._id,
-      { $inc: { balance: amount } },
-      { new: true }
-    )
-    res.status(200).json({ msg: `₹${amount} added to your account` });
-
-  } else {
+  if (!user) {
     res.status(400)
     throw new Error('user not found')
+  }
+
+  // Start a session for transaction
+  const session = await User.startSession()
+  session.startTransaction()
+
+  try {
+    // Create transaction record
+    const transaction = await Transaction.create({
+      sender: user._id,
+      receiver: user._id,
+      amount,
+      transactionId: crypto.randomBytes(5).toString('hex'),
+      type: 'deposit',
+      reference: 'payment reference',
+      status: 'success',
+    })
+
+    // Update user's balance
+    const updatedUser = await User.findByIdAndUpdate(
+      user._id,
+      { $inc: { balance: amount } },
+      { new: true, session }
+    )
+
+    // Commit the transaction
+    await session.commitTransaction()
+    session.endSession()
+
+    res.status(200).json({ 
+      msg: `₹${amount} added to your account`,
+      balance: updatedUser.balance
+    })
+  } catch (error) {
+    // If any error occurs, abort the transaction
+    await session.abortTransaction()
+    session.endSession()
+    throw error
   }
 })
 

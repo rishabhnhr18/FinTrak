@@ -15,6 +15,7 @@ import {
   payReset,
 } from '../../features/request/requestSlice'
 import Loader from '../../components/Loader/Loader'
+import { toast } from 'react-toastify'
 
 import { optionsDate, optionsTime, IndianRupee } from '../utils/helpOptions'
 
@@ -60,21 +61,20 @@ const RequestReceived = () => {
     } else if (actionType === 'deny') {
       updatedStatus = 'denied'
     } else if (actionType === 'later') {
-      updatedStatus = 'pending' // no change needed, just don't act now
+      updatedStatus = 'pending'
+      toast.success('Request marked as pay later')
     }
   
-    if (actionType !== 'later') {
-      const newRequest = {
-        _id: transaction?._id,
-        sender: transaction?.receiver._id,
-        receiver: transaction?.sender._id,
-        amount: transaction?.amount,
-        transactionType,
-        reference: 'payment reference',
-        status: updatedStatus,
-      }
-      dispatch(updateRequest(newRequest))
+    const newRequest = {
+      _id: transaction?._id,
+      sender: transaction?.receiver._id,
+      receiver: transaction?.sender._id,
+      amount: transaction?.amount,
+      transactionType,
+      reference: 'payment reference',
+      status: updatedStatus,
     }
+    dispatch(updateRequest(newRequest))
   }
   
 
