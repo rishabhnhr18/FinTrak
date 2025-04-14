@@ -58,6 +58,7 @@ const RequestReceived = () => {
     if (actionType === 'accept') {
       updatedStatus = 'accepted'
       transactionType = 'deposit'
+      toast.success('Request accepted and payment processed')
     } else if (actionType === 'deny') {
       updatedStatus = 'denied'
       toast.error('Request has been denied')
