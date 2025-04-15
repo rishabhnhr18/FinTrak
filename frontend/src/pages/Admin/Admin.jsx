@@ -72,12 +72,20 @@ const Admin = () => {
                         <TableCell className='tableCell'>{user._id}</TableCell>
                         <TableCell className='tableCell'>
                           <div className='cellWrapper'>
-                            <img
-                              src={user.image}
-                              alt={user.name}
-                              className='image'
-                            />
-                            {user.name}
+                            {user?.image ? (
+                              <img
+                                src={user?.image}
+                                alt={user?.name}
+                                className='image'
+                              />
+                            ) : (
+                              <img
+                                src={'/avatar.png'}
+                                alt={'avatar'}
+                                className='image'
+                              />)
+                            }
+                            {user?.name}
                           </div>
                         </TableCell>
                         <TableCell className='tableCell'>
