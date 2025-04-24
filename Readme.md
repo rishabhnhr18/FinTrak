@@ -74,6 +74,8 @@ VITE_URL=<link>
  - view received transactions
  - view money requests send from other users
  - accept money request and pay amount
+ - pay later for money request
+ - deny for money request
  - add balance to our account
  - verify user after registration (ADMIN)
 
