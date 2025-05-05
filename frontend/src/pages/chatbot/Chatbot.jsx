@@ -2,7 +2,9 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import './Chatbot.scss';
-import.meta.env
+//import.meta.env
+const apiURL = import.meta.env.VITE_API_URL;
+
 
 function Chatbot() {
   const [input, setInput] = useState("");
