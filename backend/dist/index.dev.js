@@ -19,12 +19,20 @@ var fileUpload = require('express-fileupload');
 
 connectDB();
 var app = express();
+var allowedOrigins = ['http://localhost:5173', 'http://192.168.1.3:5173', 'https://fintrak-frontend.onrender.com'];
 app.use(cors({
-  origin: 'https://fintrak-frontend.onrender.com',
+  origin: function origin(_origin, callback) {
+    // Allow requests with no origin (e.g., mobile apps or curl requests)
+    if (!_origin || allowedOrigins.includes(_origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true // only if using cookies/auth
 
-}));
-app.options('*', cors()); // Enable CORS
+})); //app.options('*', cors())
+// Enable CORS
 
 app.use(fileUpload({
   useTempFiles: true
