@@ -1,5 +1,5 @@
 # FinTrak Application
-![image](https://github.com/kashikaga/FinTrak/blob/main/FinTrak.png)
+![image](https://github.com/user-attachments/assets/952dda46-8101-4ca1-8cb5-ecf085a7dfa3)
 
 <br><br>
 ## Chatbot Implementation
