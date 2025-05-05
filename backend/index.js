@@ -11,7 +11,12 @@ const fileUpload = require('express-fileupload')
 connectDB()
 
 const app = express()
-app.use(cors())
+app.use(cors(
+  {
+    origin: 'https://fintrak-frontend.onrender.com',
+  credentials: true, // only if using cookies/auth
+  }
+))
 app.options('*', cors())
 // Enable CORS
 app.use(
