@@ -45,7 +45,7 @@ const Register = () => {
     e.preventDefault()
 
     console.log(validator.isMobilePhone(phone))
-    if (!validator.isMobilePhone(phone)) {
+     if (!validator.isMobilePhone(phone, 'any', { strictMode: false })) {
       alert('Invalid phone number')
       return
     }

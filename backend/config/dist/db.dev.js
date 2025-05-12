@@ -12,7 +12,7 @@ var connectDB = function connectDB() {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return regeneratorRuntime.awrap(mongoose.connect("mongodb+srv://Cluster59684:e2x5cmdsbklW@cluster59684.a9yt9.mongodb.net/wallet-app"));
+          return regeneratorRuntime.awrap(mongoose.connect("mongodb+srv://rishabhnahar18:fintrack@fintrack.y4g2lkz.mongodb.net/?retryWrites=true&w=majority&appName=fintrack"));
 
         case 3:
           conn = _context.sent;
