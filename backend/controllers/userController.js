@@ -1,3 +1,4 @@
+require('dotenv').config({ path: './.env' });
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
@@ -103,11 +104,17 @@ const login = asyncHandler(async (req, res) => {
 // @route   GET /api/users/curent_user
 // @access  Protect
 const currentUser = asyncHandler(async (req, res) => {
+  if (!req.user) {
+    res.status(401)
+    throw new Error('User not authorized or token missing')
+  }
+
   const user = {
     _id: req.user._id,
     email: req.user.email,
     name: req.user.name,
   }
+
   res.status(200).json(user)
 })
 
@@ -159,11 +166,14 @@ const getImage = asyncHandler(async (req, res) => {
   }
 })
 
-const generateToken = (id) => { 
+const generateToken = (id) => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error('JWT_SECRET is not defined in environment variables');
+  }
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d',
-  })
-}
+  });
+};
 
 module.exports = {
   register,

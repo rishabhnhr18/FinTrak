@@ -78,6 +78,10 @@ export const authSlice = createSlice({
       state.isSuccess = false
       state.message = ''
     },
+    setUser: (state, action) => {
+      state.user = action.payload
+      localStorage.setItem('user', JSON.stringify(action.payload))
+    }
   },
   extraReducers: (builder) => {
     builder
