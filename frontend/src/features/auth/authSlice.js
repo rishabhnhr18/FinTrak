@@ -81,6 +81,10 @@ export const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload
       localStorage.setItem('user', JSON.stringify(action.payload))
+    },
+    logoutReducer: (state) => {
+      state.user = null
+      localStorage.removeItem('user')
     }
   },
   extraReducers: (builder) => {
@@ -133,5 +137,5 @@ export const authSlice = createSlice({
   },
 })
 
-export const { reset } = authSlice.actions
+export const { setUser, logoutReducer, reset } = authSlice.actions
 export default authSlice.reducer
