@@ -3,7 +3,7 @@ const dotenv = require('dotenv').config()
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect("mongodb+srv://rishabhnahar18:fintrack@fintrack.y4g2lkz.mongodb.net/?retryWrites=true&w=majority&appName=fintrack")
+    const conn = await mongoose.connect(process.env.MONGO_URI)
 
     console.log(`MongoDB connected: ${conn.connection.host}`.bgGreen.black.bold.underline)
   } catch (err) {
