@@ -16,18 +16,8 @@ const allowedOrigins = [
   'http://192.168.1.3:5173',
   'https://fintrak-frontend.onrender.com'
 ]
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (e.g., mobile apps or curl requests)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  credentials: true, // only if using cookies/auth
-  }
-))
+app.use(cors())
+
 //app.options('*', cors())
 // Enable CORS
 app.use(
